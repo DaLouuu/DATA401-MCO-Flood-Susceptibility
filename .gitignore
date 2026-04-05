@@ -3,7 +3,3 @@ Data/raw/all_buildings.geojson
 
 # OSMnx cache
 cache/
-
-# Other large geospatial files (optional, precautionary)
-*.shp
-*.tif
