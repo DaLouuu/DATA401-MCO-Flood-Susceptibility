@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_dbe3fa6a5e330068d0b0718e1b154bf5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position:fixed;bottom:30px;right:30px;z-index:9999;
+     background:white;padding:12px 16px;border-radius:8px;
+     border:1px solid #ccc;font-size:13px;line-height:2;">
+  <b style="font-size:13px;">Legend</b><br>
+  <span style="color:#185FA5;">&#9632;</span> Study bounding box<br>
+  <span style="color:#1D9E75;">&#9679;</span> University inside bbox<br>
+  <span style="color:#D85A30;">&#9679;</span> University outside bbox<br>
+  <span style="color:#E24B4A;">&#9632;</span> Makati (excluded)
+</div>
+    
+            <div class="folium-map" id="map_dbe3fa6a5e330068d0b0718e1b154bf5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_dbe3fa6a5e330068d0b0718e1b154bf5 = L.map(
+                "map_dbe3fa6a5e330068d0b0718e1b154bf5",
+                {
+                    center: [14.5925, 121.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3905a8ee5371c1a33ae4e26749c9b9fc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3905a8ee5371c1a33ae4e26749c9b9fc.addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var rectangle_746dce25d196772d5f153dd3964a1743 = L.rectangle(
+                [[14.575, 120.985], [14.61, 121.015]],
+                {"bubblingMouseEvents": true, "color": "#185FA5", "dashArray": "8 4", "dashOffset": null, "fill": true, "fillColor": "#378ADD", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            rectangle_746dce25d196772d5f153dd3964a1743.bindTooltip(
+                `<div>
+                     Study area bounding box
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6df8a3321b52c666c088918c7dcefedf = L.marker(
+                [14.61, 120.985],
+                {
+}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var div_icon_2e4c5e5bb80503c2c3af176dff86323c = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;color:#185FA5;white-space:nowrap;\"\u003eNW (14.61, 120.985)\u003c/div\u003e",
+  "iconSize": [180, 20],
+  "className": "empty",
+});
+        
+    
+                marker_6df8a3321b52c666c088918c7dcefedf.setIcon(div_icon_2e4c5e5bb80503c2c3af176dff86323c);
+            
+    
+            var marker_c7e8eb2c4940abdd85d1bd27a3638789 = L.marker(
+                [14.61, 121.015],
+                {
+}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var div_icon_3f6ddf957aefcf8ccd81f0c586de4f1f = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;color:#185FA5;white-space:nowrap;\"\u003eNE (14.61, 121.015)\u003c/div\u003e",
+  "iconSize": [180, 20],
+  "className": "empty",
+});
+        
+    
+                marker_c7e8eb2c4940abdd85d1bd27a3638789.setIcon(div_icon_3f6ddf957aefcf8ccd81f0c586de4f1f);
+            
+    
+            var marker_a0290ad4da57ccb3f62aaeee15eb2273 = L.marker(
+                [14.575, 120.985],
+                {
+}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var div_icon_ee6d31a704abe6dbafd978f7639979e3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;color:#185FA5;white-space:nowrap;\"\u003eSW (14.575, 120.985)\u003c/div\u003e",
+  "iconSize": [180, 20],
+  "className": "empty",
+});
+        
+    
+                marker_a0290ad4da57ccb3f62aaeee15eb2273.setIcon(div_icon_ee6d31a704abe6dbafd978f7639979e3);
+            
+    
+            var marker_ba7090cc6967782dec976a2374bc7be2 = L.marker(
+                [14.575, 121.015],
+                {
+}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var div_icon_60e941f719746509088b828c5070b20c = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;color:#185FA5;white-space:nowrap;\"\u003eSE (14.575, 121.015)\u003c/div\u003e",
+  "iconSize": [180, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ba7090cc6967782dec976a2374bc7be2.setIcon(div_icon_60e941f719746509088b828c5070b20c);
+            
+    
+            var rectangle_c3d4958460dd132c2cf58355daaeed7b = L.rectangle(
+                [[14.55, 121.015], [14.585, 121.05]],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": "5 4", "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.07, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            rectangle_c3d4958460dd132c2cf58355daaeed7b.bindTooltip(
+                `<div>
+                     Makati — excluded (eastern boundary at 121.0150 cuts this off)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0f21cc5fd53128a9471fced2a7bbaa50 = L.marker(
+                [14.568, 121.028],
+                {
+}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+            var div_icon_8b9f64ab10b48c68b8af76be8991f594 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:12px;font-weight:600;color:#A32D2D;\"\u003eMakati (excluded)\u003c/div\u003e",
+  "iconSize": [140, 20],
+  "className": "empty",
+});
+        
+    
+                marker_0f21cc5fd53128a9471fced2a7bbaa50.setIcon(div_icon_8b9f64ab10b48c68b8af76be8991f594);
+            
+    
+            var circle_marker_56477f8b9457ec19cc62afe1c2b05eac = L.circleMarker(
+                [14.6099, 120.9893],
+                {"bubblingMouseEvents": true, "color": "#1D9E75", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1D9E75", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_4d8211e2c8e9c63bd46afc787f47bfc8 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_0f2f2308f75331fe5eefd7d8f57a139d = $(`<div id="html_0f2f2308f75331fe5eefd7d8f57a139d" style="width: 100.0%; height: 100.0%;"><b>University of Santo Tomas (UST)</b><br>Lat: 14.6099<br>Lon: 120.9893<br>✓ Inside bbox</div>`)[0];
+                popup_4d8211e2c8e9c63bd46afc787f47bfc8.setContent(html_0f2f2308f75331fe5eefd7d8f57a139d);
+            
+        
+
+        circle_marker_56477f8b9457ec19cc62afe1c2b05eac.bindPopup(popup_4d8211e2c8e9c63bd46afc787f47bfc8)
+        ;
+
+        
+    
+    
+            circle_marker_56477f8b9457ec19cc62afe1c2b05eac.bindTooltip(
+                `<div>
+                     University of Santo Tomas (UST)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_25a02702e164386544e0174ba1211ce7 = L.circleMarker(
+                [14.5981, 121.0092],
+                {"bubblingMouseEvents": true, "color": "#1D9E75", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1D9E75", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_c523696b5e4604b5f3de5fca8fb3626a = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_3a78cfdf0c2101131bad6e9fe113b96f = $(`<div id="html_3a78cfdf0c2101131bad6e9fe113b96f" style="width: 100.0%; height: 100.0%;"><b>Polytechnic Univ. of the Philippines (PUP)</b><br>Lat: 14.5981<br>Lon: 121.0092<br>✓ Inside bbox</div>`)[0];
+                popup_c523696b5e4604b5f3de5fca8fb3626a.setContent(html_3a78cfdf0c2101131bad6e9fe113b96f);
+            
+        
+
+        circle_marker_25a02702e164386544e0174ba1211ce7.bindPopup(popup_c523696b5e4604b5f3de5fca8fb3626a)
+        ;
+
+        
+    
+    
+            circle_marker_25a02702e164386544e0174ba1211ce7.bindTooltip(
+                `<div>
+                     Polytechnic Univ. of the Philippines (PUP)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f4c2f73aea0dd02758657a7789f6fd13 = L.circleMarker(
+                [14.5943, 120.9834],
+                {"bubblingMouseEvents": true, "color": "#D85A30", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D85A30", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_6cefd74f3a32939ee6b5bccb66394511 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_407ff4278528eb2d11d14397b46ad22f = $(`<div id="html_407ff4278528eb2d11d14397b46ad22f" style="width: 100.0%; height: 100.0%;"><b>Pamantasan ng Lungsod ng Maynila (PLM)</b><br>Lat: 14.5943<br>Lon: 120.9834<br>✗ Outside bbox</div>`)[0];
+                popup_6cefd74f3a32939ee6b5bccb66394511.setContent(html_407ff4278528eb2d11d14397b46ad22f);
+            
+        
+
+        circle_marker_f4c2f73aea0dd02758657a7789f6fd13.bindPopup(popup_6cefd74f3a32939ee6b5bccb66394511)
+        ;
+
+        
+    
+    
+            circle_marker_f4c2f73aea0dd02758657a7789f6fd13.bindTooltip(
+                `<div>
+                     Pamantasan ng Lungsod ng Maynila (PLM) ⚠ outside bbox
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b45132aec26624c1c16198af1fce6056 = L.circleMarker(
+                [14.5648, 120.9932],
+                {"bubblingMouseEvents": true, "color": "#D85A30", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D85A30", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_b54146aa7ce48c5a07ced1d0882b2e84 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_15782dde2b9940c09687ffd84c992533 = $(`<div id="html_15782dde2b9940c09687ffd84c992533" style="width: 100.0%; height: 100.0%;"><b>De La Salle University (DLSU)</b><br>Lat: 14.5648<br>Lon: 120.9932<br>✗ Outside bbox</div>`)[0];
+                popup_b54146aa7ce48c5a07ced1d0882b2e84.setContent(html_15782dde2b9940c09687ffd84c992533);
+            
+        
+
+        circle_marker_b45132aec26624c1c16198af1fce6056.bindPopup(popup_b54146aa7ce48c5a07ced1d0882b2e84)
+        ;
+
+        
+    
+    
+            circle_marker_b45132aec26624c1c16198af1fce6056.bindTooltip(
+                `<div>
+                     De La Salle University (DLSU) ⚠ outside bbox
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b1d7f36d34aac04abfad74148a132d92 = L.circleMarker(
+                [14.5889, 120.9837],
+                {"bubblingMouseEvents": true, "color": "#D85A30", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D85A30", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_5b9bc3afdae61a628373bc45836a48cd = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fed7796e43a9e303056bac0fb7db97d4 = $(`<div id="html_fed7796e43a9e303056bac0fb7db97d4" style="width: 100.0%; height: 100.0%;"><b>Mapua University</b><br>Lat: 14.5889<br>Lon: 120.9837<br>✗ Outside bbox</div>`)[0];
+                popup_5b9bc3afdae61a628373bc45836a48cd.setContent(html_fed7796e43a9e303056bac0fb7db97d4);
+            
+        
+
+        circle_marker_b1d7f36d34aac04abfad74148a132d92.bindPopup(popup_5b9bc3afdae61a628373bc45836a48cd)
+        ;
+
+        
+    
+    
+            circle_marker_b1d7f36d34aac04abfad74148a132d92.bindTooltip(
+                `<div>
+                     Mapua University ⚠ outside bbox
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85b700a3fe0f70664709f9fd4424784b = L.circleMarker(
+                [14.601, 120.9893],
+                {"bubblingMouseEvents": true, "color": "#1D9E75", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1D9E75", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_24fa1678018dd31c7cb011f1b4ce93cb = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fdfb9d082db375e529cfe57b39b01ac3 = $(`<div id="html_fdfb9d082db375e529cfe57b39b01ac3" style="width: 100.0%; height: 100.0%;"><b>Far Eastern University (FEU)</b><br>Lat: 14.601<br>Lon: 120.9893<br>✓ Inside bbox</div>`)[0];
+                popup_24fa1678018dd31c7cb011f1b4ce93cb.setContent(html_fdfb9d082db375e529cfe57b39b01ac3);
+            
+        
+
+        circle_marker_85b700a3fe0f70664709f9fd4424784b.bindPopup(popup_24fa1678018dd31c7cb011f1b4ce93cb)
+        ;
+
+        
+    
+    
+            circle_marker_85b700a3fe0f70664709f9fd4424784b.bindTooltip(
+                `<div>
+                     Far Eastern University (FEU)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6c00e003fa43f1d16c182c9da42be3ec = L.circleMarker(
+                [14.5977, 120.9913],
+                {"bubblingMouseEvents": true, "color": "#1D9E75", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1D9E75", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_b5ad5dee3caf15cb22a6d37aead1a022 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_7d4ff0abe94033241153326513d8b134 = $(`<div id="html_7d4ff0abe94033241153326513d8b134" style="width: 100.0%; height: 100.0%;"><b>Centro Escolar University (CEU)</b><br>Lat: 14.5977<br>Lon: 120.9913<br>✓ Inside bbox</div>`)[0];
+                popup_b5ad5dee3caf15cb22a6d37aead1a022.setContent(html_7d4ff0abe94033241153326513d8b134);
+            
+        
+
+        circle_marker_6c00e003fa43f1d16c182c9da42be3ec.bindPopup(popup_b5ad5dee3caf15cb22a6d37aead1a022)
+        ;
+
+        
+    
+    
+            circle_marker_6c00e003fa43f1d16c182c9da42be3ec.bindTooltip(
+                `<div>
+                     Centro Escolar University (CEU)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bdd7e2e797360f0774928b46595ed738 = L.circleMarker(
+                [14.5942, 120.9827],
+                {"bubblingMouseEvents": true, "color": "#D85A30", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D85A30", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_dbe3fa6a5e330068d0b0718e1b154bf5);
+        
+    
+        var popup_5b1ea83bce52d529065724efedc67f52 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_4791a769d43189179287749db9325524 = $(`<div id="html_4791a769d43189179287749db9325524" style="width: 100.0%; height: 100.0%;"><b>San Sebastian College</b><br>Lat: 14.5942<br>Lon: 120.9827<br>✗ Outside bbox</div>`)[0];
+                popup_5b1ea83bce52d529065724efedc67f52.setContent(html_4791a769d43189179287749db9325524);
+            
+        
+
+        circle_marker_bdd7e2e797360f0774928b46595ed738.bindPopup(popup_5b1ea83bce52d529065724efedc67f52)
+        ;
+
+        
+    
+    
+            circle_marker_bdd7e2e797360f0774928b46595ed738.bindTooltip(
+                `<div>
+                     San Sebastian College ⚠ outside bbox
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
